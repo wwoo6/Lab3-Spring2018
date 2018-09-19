@@ -21,12 +21,21 @@ public class WebScripter {
         urlScanner.close();
         return contents;
     }
-    public static int count (String word, String scriptWords) {
-        return null;
+
+    public static int count(String word, String script) {
+        String[] splitScript = script.split(" ");
+        int count = 0;
+        for (int i = 0; i < splitScript.length; i++) {
+            if (word.equals(splitScript[i]) || splitScript[i].contains("prince")) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static void main(String[] unused) {
         String script = urlToString("http://erdani.com/tdpl/hamlet.txt");
-        System.out.println("Word Count = " + script.length());
+        String word = "prince";
+        System.out.println(count(word, script));
     }
 }
